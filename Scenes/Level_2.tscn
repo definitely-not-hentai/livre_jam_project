@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://TileSets/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Sprites/Blocks/New Piskel (10).png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Blocks/New Piskel (11).png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Blocks/New Piskel (12).png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 298.389, 39.8619 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 183.215, 65.9297 )
+
+[node name="Level_2" type="Node2D" index="0"]
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -131072, 0, 0, -1, 0, 0, 65534, 0, 0, 131069, 0, 0, 65598, 0, 0, 196604, 0, 0, 131105, 0, 0, 131106, 0, 0, 131107, 0, 0, 131108, 0, 0, 131109, 0, 0, 131110, 0, 0, 131111, 0, 0, 131112, 0, 0, 131113, 0, 0, 131114, 0, 0, 131134, 0, 0, 262141, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 196638, 0, 0, 196670, 0, 0, 327678, 0, 0, 262206, 0, 0, 393215, 0, 0, 327742, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393249, 0, 0, 393250, 0, 0, 393251, 0, 0, 393252, 0, 0, 393253, 0, 0, 393254, 0, 0, 393255, 0, 0, 393256, 0, 0, 393257, 0, 0, 393258, 0, 0, 393278, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 458781, 0, 0, 458814, 0, 0, 524318, 0, 0, 524350, 0, 0, 589855, 0, 0, 589868, 0, 0, 589869, 0, 0, 589870, 0, 0, 589871, 0, 0, 589872, 0, 0, 589873, 0, 0, 589874, 0, 0, 589875, 0, 0, 589876, 0, 0, 589877, 0, 0, 589878, 0, 0, 589879, 0, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0, 589883, 0, 0, 589884, 0, 0, 589885, 0, 0, 655392, 0, 0, 655393, 0, 0, 655394, 0, 0, 655395, 0, 0, 655396, 0, 0, 655397, 0, 0, 655398, 0, 0, 655399, 0, 0, 655400, 0, 0, 655401, 0, 0, 655402, 0, 0, 655403, 0, 0, 1835037, 0, 0, 1835038, 0, 0, 1835039, 0, 0, 1835040, 0, 0, 1835041, 0, 0, 1900567, 0, 0, 1900569, 0, 0, 1900570, 0, 0, 1900571, 0, 0, 1900572, 0, 0, 1900577, 0, 0, 1900578, 0, 0, 1900579, 0, 0, 1966100, 0, 0, 1966101, 0, 0, 1966102, 0, 0, 1966103, 0, 0, 1966104, 0, 0, 1966116, 0, 0, 1966117, 0, 0, 1966118, 0, 0, 2031636, 0, 0, 2031654, 0, 0, 2031655, 0, 0, 2097171, 0, 0, 2097191, 0, 0, 2097192, 0, 0, 2162707, 0, 0, 2162728, 0, 0, 2228243, 0, 0, 2228264, 0, 0, 2293778, 0, 0, 2293800, 0, 0, 2359315, 0, 0, 2359336, 0, 0, 2424851, 0, 0, 2424873, 0, 0, 2490386, 0, 0, 2490387, 0, 0, 2490409, 0, 0, 2555922, 0, 0, 2555923, 0, 0, 2555945, 0, 0, 2621458, 0, 0, 2621481, 0, 0, 2686990, 0, 0, 2686991, 0, 0, 2686992, 0, 0, 2686993, 0, 0, 2686994, 0, 0, 2686995, 0, 0, 2686996, 0, 0, 2686997, 0, 0, 2686998, 0, 0, 2686999, 0, 0, 2687000, 0, 0, 2687001, 0, 0, 2687002, 0, 0, 2687003, 0, 0, 2687004, 0, 0, 2687005, 0, 0, 2687006, 0, 0, 2687007, 0, 0, 2687008, 0, 0, 2687009, 0, 0, 2687010, 0, 0, 2687011, 0, 0, 2687012, 0, 0, 2687013, 0, 0, 2687014, 0, 0, 2687015, 0, 0, 2687016, 0, 0, 2687017, 0, 0, 2687018, 0, 0, 2687019, 0, 0 )
+
+[node name="Cabana" type="Sprite" parent="." index="1"]
+
+position = Vector2( 1450.9, 90.6455 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cabana2" type="Sprite" parent="." index="2"]
+
+position = Vector2( 1844.22, 90.6455 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cabana3" type="Sprite" parent="." index="3"]
+
+position = Vector2( 2279.38, 29.2763 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cabana4" type="Sprite" parent="." index="4"]
+
+position = Vector2( 2558.33, 280.332 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cabana_chefe" type="Area2D" parent="." index="5"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Sprite" type="Sprite" parent="Cabana_chefe" index="0"]
+
+position = Vector2( 3423.22, 352.108 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cabana_chefe" index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( 3433.89, 262.845, 3516.79, 576.372, 3334.4, 573.357 )
+
+[node name="Plataforma" type="StaticBody2D" parent="." index="6"]
+
+editor/display_folded = true
+position = Vector2( 2623.38, 1801.24 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Plataforma" index="0"]
+
+scale = Vector2( 9.45021, 1.34285 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="Porta" type="Area2D" parent="." index="7"]
+
+position = Vector2( 1923.58, 2369.29 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Sprite" type="Sprite" parent="Porta" index="0"]
+
+position = Vector2( 52.3268, -52.4592 )
+scale = Vector2( 0.5, 0.8 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porta" index="1"]
+
+position = Vector2( 51.8173, 186.912 )
+shape = SubResource( 2 )
+
+[node name="Player" parent="." index="8" instance=ExtResource( 6 )]
+
+position = Vector2( 2000.19, 2372.42 )
+
+

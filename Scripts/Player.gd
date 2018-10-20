@@ -3,7 +3,7 @@ extends KinematicBody2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-signal add_points()
+signal add_points(ganhou)
 
 const normal = Vector2(0,-1)
 export(int) var GRAVITY = 1000
@@ -44,6 +44,7 @@ func corpo_entrou(body):
 	
 func attack():
 	print("aiaiai")
+	emit_signal("add_points",false)
 
 func animation_end(anim):
 	if anim == "Attack":
@@ -60,7 +61,7 @@ func _process(delta):
 			#print(body.name)
 			if body.is_in_group("Monster"):
 				if body.attack() == true:
-					emit_signal("add_points")
+					emit_signal("add_points",true)
 					if inocente:
 						inocente = false
 						for node in get_parent().get_children():

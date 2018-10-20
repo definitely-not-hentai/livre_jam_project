@@ -18,10 +18,10 @@ extents = Vector2( 8119.85, 31 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 478.601 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 
 resource_name = "End_anim"
-length = 1.0
+length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "method"
@@ -45,7 +45,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -91,10 +91,10 @@ tracks/4/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 
 resource_name = "Fall_end_anim"
-length = 1.0
+length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "method"
@@ -118,7 +118,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -164,10 +164,10 @@ tracks/4/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 
 resource_name = "Good_end_anim"
-length = 1.0
+length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "method"
@@ -191,11 +191,11 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "back"
+"method": "next"
 } ]
 }
 tracks/2/type = "method"
@@ -234,7 +234,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 2 ]
+"values": [ 0 ]
 }
 
 [node name="Level_1" type="Node2D"]
@@ -353,9 +353,9 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/End_anim = SubResource( 6 )
-anims/Fall_end_anim = SubResource( 7 )
-anims/Good_end_anim = SubResource( 8 )
+anims/End_anim = SubResource( 3 )
+anims/Fall_end_anim = SubResource( 4 )
+anims/Good_end_anim = SubResource( 5 )
 blend_times = [  ]
 
 [node name="Player" parent="." index="11" instance=ExtResource( 6 )]

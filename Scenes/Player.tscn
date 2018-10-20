@@ -88,7 +88,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 35.745, 4.66032 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 2
@@ -170,14 +170,5 @@ __meta__ = {
 position = Vector2( -44.0938, 1.43394 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="Tween" type="Tween" parent="." index="5"]
-
-repeat = false
-playback_process_mode = 1
-playback_speed = 1.0
-playback/active = false
-playback/repeat = false
-playback/speed = 1.0
 
 

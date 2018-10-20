@@ -3,6 +3,8 @@ extends KinematicBody2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+signal falou_bem(node)
+
 const normal = Vector2(0,-1)
 
 export(bool) var WALKING
@@ -11,12 +13,15 @@ export(int) var TO
 
 var going_right = true
 var vivo = true
+var nao_falou = true
 
 export(bool) var agressivo = false
 export(int) var GRAVITY = 800
 export(int) var WALK_SPEED = 200
 export(int) var JUMP_SPEED = 700
 export(float) var ATTACK_DELAY = 1.1
+export(AudioStreamSample) var AUDIO_NORMAL
+export(AudioStreamSample) var AUDIO_PUTO
 
 var last = false
 var is_attacking = false
@@ -36,10 +41,14 @@ func _ready():
 	$Deteccao.connect("body_exited",self,"player_exit")
 	$Attack_Timer.wait_time = ATTACK_DELAY
 	$Attack_Timer.connect("timeout",self,"attack_timeout")
+	$Falas.connect("finished",self,"audio_finished")
 	if agressivo:
 		$Putisse.show()
 	pass
-	
+
+func audio_finished():
+	$Falas.stop()
+
 func attack_timeout():
 	can_attack = true
 
@@ -52,26 +61,23 @@ func player_exit(body):
 	if body.is_in_group("Player"):
 		ve_player = false
 
-#func ataque_entered(body):
-#	if is_attacking and body.is_in_group("Player"):
-#		body.attack()
-#		pass
-#	pass
 
 func get_puto():
 	agressivo = true
+	WALKING = true
 	$Putisse.show()
 
 func animation_end(anim):
 	if anim == "Attack":
 		is_attacking = false
 	pass
-	
+
 func attack():
 	if vivo:
 		vivo = false
 		#rint("ai")
 		WALKING = false
+		get_parent().fala_boa = 0
 		if $Sprite.flip_h:
 			$AnimationPlayer.play("Morrer_Right")
 		else:
@@ -114,6 +120,24 @@ func _process(delta):
 					$Sprite.flip_h = true
 				else:
 					going_right = true
+	if ve_player:
+		if Input.is_action_just_pressed("ui_talk"):
+			if not agressivo:
+				if player.position.x > position.x:
+					$Sprite.flip_h = false
+				else:
+					$Sprite.flip_h = true
+				print("fala normal")
+				$Falas.stream = AUDIO_NORMAL
+				WALKING = false
+				$Falas.play(0.0)
+				if nao_falou:
+					emit_signal("falou_bem",self)
+					nao_falou = false
+			else:
+				print("fala puto")
+				$Falas.stream = AUDIO_PUTO
+				$Falas.play(0.0)
 	if is_on_floor() or last:
 		linear_velocity.y = 0
 		if linear_velocity.x == 0 and not is_attacking:

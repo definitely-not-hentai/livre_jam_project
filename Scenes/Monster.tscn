@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Monster.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Characters/Johnny-Walker.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Audios/Falas/Monstro/normal.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audios/Falas/Monstro/puto.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sprites/Characters/Johnny-Walker.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -177,6 +179,8 @@ GRAVITY = 800
 WALK_SPEED = 200
 JUMP_SPEED = 700
 ATTACK_DELAY = 1.1
+AUDIO_NORMAL = ExtResource( 2 )
+AUDIO_PUTO = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -185,7 +189,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, -40 )
 vframes = 2
 hframes = 2
@@ -229,7 +233,7 @@ shape = SubResource( 8 )
 visible = false
 position = Vector2( 0, -95.2669 )
 scale = Vector2( 0.150553, 0.150405 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Deteccao" type="Area2D" parent="." index="5"]
@@ -253,5 +257,16 @@ process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = false
+
+[node name="Falas" type="AudioStreamPlayer2D" parent="." index="7"]
+
+stream = ExtResource( 3 )
+volume_db = 10.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 
