@@ -5,12 +5,15 @@ extends KinematicBody2D
 # var b = "textvar"
 const normal = Vector2(0,-1)
 
+export(bool) var WALKING
 export(int) var FROM
 export(int) var TO
 
 var going_right = true
+var vivo = true
 
-export(int) var GRAVITY = 600
+export(bool) var agressivo = false
+export(int) var GRAVITY = 800
 export(int) var WALK_SPEED = 200
 export(int) var JUMP_SPEED = 700
 
@@ -25,6 +28,8 @@ func _ready():
 	add_to_group("Monster")
 	$AnimationPlayer.connect("animation_finished",self,"animation_end")
 	$Ataque.connect("body_entered",self,"ataque_entered")
+	if agressivo:
+		$Putisse.show()
 	pass
 
 func ataque_entered(body):
@@ -33,27 +38,41 @@ func ataque_entered(body):
 		pass
 	pass
 
+func get_puto():
+	agressivo = true
+	$Putisse.show()
+
 func animation_end(anim):
 	if anim == "Attack":
 		is_attacking = false
 	pass
 	
 func attack():
-	print("ai")
-	pass
+	if vivo:
+		vivo = false
+		#rint("ai")
+		WALKING = false
+		if $Sprite.flip_h:
+			$AnimationPlayer.play("Morrer_Right")
+		else:
+			$AnimationPlayer.play("Morrer_Left")
+		set_process(false)
+		return true
+		pass
 
 func _process(delta):
 	linear_velocity.x = 0
-	if going_right:
-		if position.x < TO:
-			linear_velocity.x += WALK_SPEED
+	if WALKING:
+		if going_right:
+			if position.x < TO:
+				linear_velocity.x += WALK_SPEED
+			else:
+				going_right = false
 		else:
-			going_right = false
-	else:
-		if position.x > FROM:
-			linear_velocity.x -= WALK_SPEED
-		else:
-			going_right = true
+			if position.x > FROM:
+				linear_velocity.x -= WALK_SPEED
+			else:
+				going_right = true
 	if linear_velocity.x > 0:
 		$Sprite.flip_h = false
 	if linear_velocity.x < 0:
@@ -63,6 +82,9 @@ func _process(delta):
 		if linear_velocity.x == 0 and not is_attacking:
 			$AnimationPlayer.play("Idle")
 		elif not is_attacking:
+			if $AnimationPlayer.current_animation == "Jump":
+				$AnimationPlayer.play("Walking")
+				$AnimationPlayer.advance(0.3)
 			if $AnimationPlayer.current_animation != "Walking":
 				$AnimationPlayer.play("Walking")
 	else:

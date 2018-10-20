@@ -4,13 +4,14 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 const normal = Vector2(0,-1)
-export(int) var GRAVITY = 700
-export(int) var WALK_SPEED = 200
-export(int) var JUMP_SPEED = 600
+export(int) var GRAVITY = 1000
+export(int) var WALK_SPEED = 300
+export(int) var JUMP_SPEED = 700
 
 var last = false
 var is_attacking = false
 var body_list = []
+var inocente = true
 
 var linear_velocity = Vector2(0,0)
 
@@ -47,7 +48,13 @@ func _process(delta):
 		for body in body_list:
 			#print(body.name)
 			if body.is_in_group("Monster"):
-				body.attack()
+				if body.attack() == true:
+					$HUD.add_points()
+					if inocente:
+						inocente = false
+						for node in get_parent().get_children():
+							if node.is_in_group("Monster"):
+								node.get_puto()
 	if Input.is_action_pressed("ui_right"):
 		linear_velocity.x += WALK_SPEED
 		$Sprite.flip_h = false
@@ -61,7 +68,10 @@ func _process(delta):
 		if linear_velocity.x == 0 and not is_attacking:
 			$AnimationPlayer.play("Idle")
 		elif not is_attacking:
-			if $AnimationPlayer.current_animation != "Walking":
+			if $AnimationPlayer.current_animation == "Jump":
+				$AnimationPlayer.play("Walking")
+				$AnimationPlayer.advance(0.3)
+			elif $AnimationPlayer.current_animation != "Walking":
 				$AnimationPlayer.play("Walking")
 		if Input.is_action_pressed("ui_up"):
 			linear_velocity.y -= JUMP_SPEED

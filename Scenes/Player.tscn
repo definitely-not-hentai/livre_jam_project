@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/Johnny-Walker.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -96,9 +97,9 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
-GRAVITY = 700
+GRAVITY = 800
 WALK_SPEED = 200
-JUMP_SPEED = 600
+JUMP_SPEED = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -109,7 +110,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 2
-frame = 3
 _sections_unfolded = [ "Animation", "Offset" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
@@ -170,5 +170,9 @@ __meta__ = {
 position = Vector2( -44.0938, 1.43394 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="HUD" parent="." index="5" instance=ExtResource( 3 )]
+
+multi = 1
 
 
