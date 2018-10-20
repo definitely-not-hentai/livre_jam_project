@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/Johnny-Walker.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -89,7 +88,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 35.745, 4.66032 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 2
@@ -172,8 +171,13 @@ position = Vector2( -44.0938, 1.43394 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HUD" parent="." index="5" instance=ExtResource( 3 )]
+[node name="Tween" type="Tween" parent="." index="5"]
 
-multi = 1
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 

@@ -160,7 +160,7 @@ extents = Vector2( 30.3049, 5.9215 )
 custom_solver_bias = 0.0
 extents = Vector2( 254.167, 40.8019 )
 
-[node name="Monster" type="KinematicBody2D" index="0"]
+[node name="Monster" type="KinematicBody2D"]
 
 position = Vector2( 0, 35.2843 )
 input_pickable = false

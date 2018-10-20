@@ -3,6 +3,8 @@ extends KinematicBody2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+signal add_points()
+
 const normal = Vector2(0,-1)
 export(int) var GRAVITY = 1000
 export(int) var WALK_SPEED = 300
@@ -58,7 +60,7 @@ func _process(delta):
 			#print(body.name)
 			if body.is_in_group("Monster"):
 				if body.attack() == true:
-					$HUD.add_points()
+					emit_signal("add_points")
 					if inocente:
 						inocente = false
 						for node in get_parent().get_children():

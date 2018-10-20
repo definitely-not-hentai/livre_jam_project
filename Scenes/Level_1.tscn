@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://TileSets/tiles.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Monster.tscn" type="PackedScene" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,19 +18,33 @@ extents = Vector2( 8119.85, 31 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 478.601 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 
 resource_name = "End_anim"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "method"
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("Player")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fix_camera"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -37,8 +52,46 @@ tracks/0/keys = {
 "method": "back"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("HUD/End_Screen")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HUD/End_Screen:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HUD/End_Screen:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 
 resource_name = "Fall_end_anim"
 length = 1.0
@@ -72,6 +125,117 @@ tracks/1/keys = {
 "method": "back"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("HUD/End_Screen")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HUD/End_Screen:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HUD/End_Screen:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "Good_end_anim"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath("Player")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fix_camera"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "back"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("HUD/End_Screen")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HUD/End_Screen:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HUD/End_Screen:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
 
 [node name="Level_1" type="Node2D"]
 
@@ -95,7 +259,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -524195, 0, 0, -524194, 0, 0, -524193, 0, 0, -524192, 0, 0, -524191, 0, 0, -524190, 0, 0, -524189, 0, 0, -524188, 0, 0, -524187, 0, 0, -524186, 0, 0, -524185, 0, 0, -458668, 0, 0, -458667, 0, 0, -458666, 0, 0, -458665, 0, 0, -458664, 0, 0, -458663, 0, 0, -458662, 0, 0, -458661, 0, 0, -458660, 0, 0, -393146, 0, 0, -393145, 0, 0, -393144, 0, 0, -393143, 0, 0, -393142, 0, 0, -393141, 0, 0, -393140, 0, 0, -393139, 0, 0, -393138, 0, 0, -393137, 0, 0, -393136, 0, 0, -393135, 0, 0, -393134, 0, 0, -393133, 0, 0, -196546, 0, 0, -196545, 0, 0, -196544, 0, 0, -196543, 0, 0, -196542, 0, 0, -196541, 0, 0, 70, 0, 0, 71, 0, 0, 72, 0, 0, 73, 0, 0, 74, 0, 0, 75, 0, 0, 76, 0, 0, 77, 0, 0, 78, 0, 0, 79, 0, 0, 80, 0, 0, 81, 0, 0, 82, 0, 0, 83, 0, 0, 65584, 0, 0, 65585, 0, 0, 65586, 0, 0, 65587, 0, 0, 65588, 0, 0, 65589, 0, 0, 65590, 0, 0, 131099, 0, 0, 131100, 0, 0, 131101, 0, 0, 131102, 0, 0, 131103, 0, 0, 131104, 0, 0, 131105, 0, 0, 131106, 0, 0, 131107, 0, 0, 131108, 0, 0, 131109, 0, 0, 196633, 0, 0, 196634, 0, 0, 196646, 0, 0, 196647, 0, 0, 196648, 0, 0, 196649, 0, 0, 196650, 0, 0, 196670, 0, 0, 196671, 0, 0, 196672, 0, 0, 196673, 0, 0, 196674, 0, 0, 196675, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262187, 0, 0, 262188, 0, 0, 262189, 0, 0, 262190, 0, 0, 262191, 0, 0, 262192, 0, 0, 262193, 0, 0, 262194, 0, 0, 262195, 0, 0, 262196, 0, 0, 262197, 0, 0, 262198, 0, 0, 262199, 0, 0, 262200, 0, 0, 262201, 0, 0, 262202, 0, 0, 262203, 0, 0, 262204, 0, 0, 262205, 0, 0 )
+tile_data = PoolIntArray( -524195, 0, 0, -524194, 0, 0, -524193, 0, 0, -524192, 0, 0, -524191, 0, 0, -524190, 0, 0, -524189, 0, 0, -524188, 0, 0, -524187, 0, 0, -524186, 0, 0, -524185, 0, 0, -458668, 0, 0, -458667, 0, 0, -458666, 0, 0, -458665, 0, 0, -458664, 0, 0, -458663, 0, 0, -458662, 0, 0, -458661, 0, 0, -458660, 0, 0, -393146, 0, 0, -393145, 0, 0, -393144, 0, 0, -393143, 0, 0, -393142, 0, 0, -393141, 0, 0, -393140, 0, 0, -393139, 0, 0, -393138, 0, 0, -393137, 0, 0, -393136, 0, 0, -393135, 0, 0, -393134, 0, 0, -393133, 0, 0, -196607, 0, 0, -196606, 0, 0, -196546, 0, 0, -196545, 0, 0, -196544, 0, 0, -196543, 0, 0, -196542, 0, 0, -196541, 0, 0, -65537, 0, 0, -131072, 0, 0, -3, 0, 0, -2, 0, 0, 65531, 0, 0, 65532, 0, 0, 70, 0, 0, 71, 0, 0, 72, 0, 0, 73, 0, 0, 74, 0, 0, 75, 0, 0, 76, 0, 0, 77, 0, 0, 78, 0, 0, 131065, 0, 0, 131066, 0, 0, 65584, 0, 0, 65585, 0, 0, 65586, 0, 0, 65587, 0, 0, 65588, 0, 0, 65589, 0, 0, 65590, 0, 0, 196599, 0, 0, 196600, 0, 0, 131099, 0, 0, 131100, 0, 0, 131101, 0, 0, 131102, 0, 0, 131103, 0, 0, 131104, 0, 0, 131105, 0, 0, 131106, 0, 0, 131107, 0, 0, 131108, 0, 0, 131109, 0, 0, 262133, 0, 0, 262134, 0, 0, 196633, 0, 0, 196634, 0, 0, 196646, 0, 0, 196647, 0, 0, 196648, 0, 0, 196649, 0, 0, 196650, 0, 0, 196670, 0, 0, 196671, 0, 0, 196672, 0, 0, 196673, 0, 0, 196674, 0, 0, 196675, 0, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262187, 0, 0, 262188, 0, 0, 262189, 0, 0, 262190, 0, 0, 262191, 0, 0, 262192, 0, 0, 262193, 0, 0, 262194, 0, 0, 262195, 0, 0, 262196, 0, 0, 262197, 0, 0, 262198, 0, 0, 262199, 0, 0, 262200, 0, 0, 262201, 0, 0, 262202, 0, 0, 262203, 0, 0, 262204, 0, 0, 262205, 0, 0 )
 
 [node name="Limite" type="Area2D" parent="." index="1"]
 
@@ -121,51 +285,45 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Monster" parent="." index="3" instance=ExtResource( 4 )]
 
-position = Vector2( 2398.31, 62.9037 )
+position = Vector2( 2047.83, 29.4662 )
 WALKING = true
-FROM = 1900
-TO = 2400
-ATTACK_DELAY = 1.1
+FROM = 1740
+TO = 2415
 
 [node name="Monster2" parent="." index="4" instance=ExtResource( 4 )]
 
-position = Vector2( 3422.58, -56.0365 )
+position = Vector2( 3501.08, 50.8552 )
 WALKING = true
-FROM = 3120
-TO = 3440
-ATTACK_DELAY = 1.1
+FROM = 3075
+TO = 3500
 
 [node name="Monster3" parent="." index="5" instance=ExtResource( 4 )]
 
-position = Vector2( 2925.82, 190.184 )
+position = Vector2( 3817.43, 206.136 )
 WALKING = true
-FROM = 2920
-TO = 3830
-ATTACK_DELAY = 1.1
+FROM = 2783
+TO = 3930
 
 [node name="Monster4" parent="." index="6" instance=ExtResource( 4 )]
 
-position = Vector2( 5247.19, -61.2818 )
+position = Vector2( 4502.51, -18.7448 )
 WALKING = true
-FROM = 4550
-TO = 5250
-ATTACK_DELAY = 1.1
+FROM = 4500
+TO = 5030
 
 [node name="Monster6" parent="." index="7" instance=ExtResource( 4 )]
 
-position = Vector2( 5239.41, -481.475 )
+position = Vector2( 4495.06, -395.352 )
 WALKING = true
-FROM = 4550
-TO = 5250
-ATTACK_DELAY = 1.1
+FROM = 4490
+TO = 5340
 
 [node name="Monster5" parent="." index="8" instance=ExtResource( 4 )]
 
-position = Vector2( 5851, -497.038 )
+position = Vector2( 5387.58, -462.179 )
 WALKING = true
-FROM = 5450
-TO = 5850
-ATTACK_DELAY = 1.1
+FROM = 5380
+TO = 5920
 
 [node name="Final" type="Area2D" parent="." index="9"]
 
@@ -181,10 +339,11 @@ audio_bus_name = "Master"
 [node name="Sprite" type="Sprite" parent="Final" index="0"]
 
 texture = ExtResource( 5 )
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Final" index="1"]
 
-position = Vector2( 123.896, -103.247 )
+position = Vector2( 2.91357, -101.196 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
@@ -194,12 +353,15 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/End_anim = SubResource( 3 )
-anims/Fall_end_anim = SubResource( 4 )
+anims/End_anim = SubResource( 6 )
+anims/Fall_end_anim = SubResource( 7 )
+anims/Good_end_anim = SubResource( 8 )
 blend_times = [  ]
 
 [node name="Player" parent="." index="11" instance=ExtResource( 6 )]
 
 position = Vector2( 372.719, 163.065 )
+
+[node name="HUD" parent="." index="12" instance=ExtResource( 7 )]
 
 

@@ -3,10 +3,14 @@ extends CanvasLayer
 # class member variables go here, for example:
 # var a = 2
 export(int) var multi = 1
+var string = ""
 
 func add_points():
 	for i in range (multi):
-		$Points.add_text(".")
+		string += "."
+	$Points.clear()
+	$Points.add_text(string)
+	$Points.update()
 	$AnimationPlayer.play("Matou")
 
 func _ready():
