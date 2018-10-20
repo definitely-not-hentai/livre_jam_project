@@ -28,11 +28,20 @@ func corpo_saiu(body):
 	if body in body_list:
 		body_list.erase(body)
 	pass
+	
+func fix_camera():
+	var camera = $Camera2D
+	remove_child(camera)
+	camera.position += position
+	get_parent().add_child(camera)
 
 func corpo_entrou(body):
 	if not body in body_list:
 		body_list.append(body)
 	pass
+	
+func attack():
+	print("aiaiai")
 
 func animation_end(anim):
 	if anim == "Attack":
@@ -75,6 +84,8 @@ func _process(delta):
 				$AnimationPlayer.play("Walking")
 		if Input.is_action_pressed("ui_up"):
 			linear_velocity.y -= JUMP_SPEED
+	elif is_on_ceiling():
+		linear_velocity.y += GRAVITY*delta
 	elif not is_attacking:
 		$AnimationPlayer.play("Jump")
 	last = is_on_floor()

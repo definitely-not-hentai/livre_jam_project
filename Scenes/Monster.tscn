@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Monster.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/Johnny-Walker.png" type="Texture" id=2]
@@ -153,7 +153,12 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
-extents = Vector2( 19.179, 34.7546 )
+extents = Vector2( 30.3049, 5.9215 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 254.167, 40.8019 )
 
 [node name="Monster" type="KinematicBody2D" index="0"]
 
@@ -168,9 +173,10 @@ WALKING = false
 FROM = null
 TO = null
 agressivo = false
-GRAVITY = 700
+GRAVITY = 800
 WALK_SPEED = 200
-JUMP_SPEED = 600
+JUMP_SPEED = 700
+ATTACK_DELAY = 1.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -183,6 +189,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -40 )
 vframes = 2
 hframes = 2
+frame = 3
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
@@ -214,7 +221,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ataque" index="0"]
 
-position = Vector2( -19.0645, -43.4542 )
+position = Vector2( -1.25324, -41.7023 )
 shape = SubResource( 8 )
 
 [node name="Putisse" type="Sprite" parent="." index="4"]
@@ -223,6 +230,28 @@ visible = false
 position = Vector2( 0, -95.2669 )
 scale = Vector2( 0.150553, 0.150405 )
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Deteccao" type="Area2D" parent="." index="5"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deteccao" index="0"]
+
+position = Vector2( 1.629, -37.4671 )
+shape = SubResource( 9 )
+
+[node name="Attack_Timer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
 
 

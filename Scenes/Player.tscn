@@ -97,9 +97,9 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
-GRAVITY = 800
-WALK_SPEED = 200
-JUMP_SPEED = 500
+GRAVITY = 1000
+WALK_SPEED = 300
+JUMP_SPEED = 700
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -123,7 +123,7 @@ limit_top = -10000000
 limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
-drag_margin_h_enabled = true
+drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 smoothing_enabled = false
 smoothing_speed = 5.0
@@ -136,6 +136,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 

@@ -16,9 +16,13 @@ export(bool) var agressivo = false
 export(int) var GRAVITY = 800
 export(int) var WALK_SPEED = 200
 export(int) var JUMP_SPEED = 700
+export(float) var ATTACK_DELAY = 1.1
 
 var last = false
 var is_attacking = false
+var ve_player = false
+var player
+var can_attack = true
 
 var linear_velocity = Vector2(0,0)
 
@@ -27,16 +31,32 @@ func _ready():
 	# Initialization here
 	add_to_group("Monster")
 	$AnimationPlayer.connect("animation_finished",self,"animation_end")
-	$Ataque.connect("body_entered",self,"ataque_entered")
+	#$Ataque.connect("body_entered",self,"ataque_entered")
+	$Deteccao.connect("body_entered",self,"player_entered")
+	$Deteccao.connect("body_exited",self,"player_exit")
+	$Attack_Timer.wait_time = ATTACK_DELAY
+	$Attack_Timer.connect("timeout",self,"attack_timeout")
 	if agressivo:
 		$Putisse.show()
 	pass
+	
+func attack_timeout():
+	can_attack = true
 
-func ataque_entered(body):
-	if is_attacking and body.is_in_group("Player"):
-		body.attack()
-		pass
-	pass
+func player_entered(body):
+	if body.is_in_group("Player"):
+		ve_player = true
+		player = body
+
+func player_exit(body):
+	if body.is_in_group("Player"):
+		ve_player = false
+
+#func ataque_entered(body):
+#	if is_attacking and body.is_in_group("Player"):
+#		body.attack()
+#		pass
+#	pass
 
 func get_puto():
 	agressivo = true
@@ -63,20 +83,37 @@ func attack():
 func _process(delta):
 	linear_velocity.x = 0
 	if WALKING:
-		if going_right:
-			if position.x < TO:
-				linear_velocity.x += WALK_SPEED
+		if agressivo and ve_player:
+			var distance = player.position - position
+			if distance.x < 0:
+				$Sprite.flip_h = true
 			else:
-				going_right = false
+				$Sprite.flip_h = false
+			if player.position.x < TO and player.position.x > FROM:
+				if distance.x < -40:
+					linear_velocity.x -= WALK_SPEED
+				elif distance.x > 40:
+					linear_velocity.x += WALK_SPEED
+			if distance.x < 50 and distance.x > -50 and can_attack:
+				can_attack = false
+				$Attack_Timer.start()
+				is_attacking = true
+				player.attack()
+				$AnimationPlayer.play("Attack")
+				pass
 		else:
-			if position.x > FROM:
-				linear_velocity.x -= WALK_SPEED
+			if going_right:
+				if position.x < TO:
+					linear_velocity.x += WALK_SPEED
+					$Sprite.flip_h = false
+				else:
+					going_right = false
 			else:
-				going_right = true
-	if linear_velocity.x > 0:
-		$Sprite.flip_h = false
-	if linear_velocity.x < 0:
-		$Sprite.flip_h = true
+				if position.x > FROM:
+					linear_velocity.x -= WALK_SPEED
+					$Sprite.flip_h = true
+				else:
+					going_right = true
 	if is_on_floor() or last:
 		linear_velocity.y = 0
 		if linear_velocity.x == 0 and not is_attacking:
