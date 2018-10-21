@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="unnamed"
-run/main_scene="res://Scenes/Level_1.tscn"
+run/main_scene="res://Scenes/Title.tscn"
 config/icon="res://icon.png"
 
 [display]

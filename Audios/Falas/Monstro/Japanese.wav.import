@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/puto.wav-e8a476bb3b4ad687cbd77304829e3b44.sample"
+path="res://.import/Japanese.wav-76078997e4dc46dfa0cc5bb2c3b19c5d.sample"
 
 [deps]
 
-source_file="res://Audios/Falas/Monstro/puto.wav"
-dest_files=[ "res://.import/puto.wav-e8a476bb3b4ad687cbd77304829e3b44.sample" ]
+source_file="res://Audios/Falas/Monstro/Japanese.wav"
+dest_files=[ "res://.import/Japanese.wav-76078997e4dc46dfa0cc5bb2c3b19c5d.sample" ]
 
 [params]
 

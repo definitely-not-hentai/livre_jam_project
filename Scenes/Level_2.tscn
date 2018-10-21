@@ -32,7 +32,7 @@ extents = Vector2( 240.52, 14.4417 )
 [sub_resource type="Animation" id=4]
 
 resource_name = "Win"
-length = 3.0
+length = 5.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -54,7 +54,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 3 ),
+"times": PoolRealArray( 5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -208,15 +208,11 @@ position = Vector2( 2417.47, 332.264 )
 
 position = Vector2( 1577.37, 429.135 )
 
-[node name="Monster4" parent="." index="14" instance=ExtResource( 7 )]
+[node name="M_dentro" parent="." index="14" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( 1713.23, 2770.06 )
 FLIP_H = true
-
-[node name="Deteccao" parent="Monster4" index="4"]
-
-position = Vector2( -98.5408, 1.67017 )
 
 [node name="Chefe" parent="." index="15" instance=ExtResource( 7 )]
 
@@ -233,7 +229,7 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="Player" parent="." index="16" instance=ExtResource( 9 )]
 
-position = Vector2( 2105.93, 2662.39 )
+position = Vector2( 548.132, -537.622 )
 can_attack = false
 
 [node name="Candy" type="KinematicBody2D" parent="." index="17"]
@@ -310,7 +306,7 @@ blend_times = [  ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="21"]
 
-layer = 1
+layer = 20
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -318,12 +314,9 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer" index="0"]
 
-visible = false
-modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 1967.09, 2418.66 )
 texture = ExtResource( 13 )
 vframes = 3
 _sections_unfolded = [ "Animation", "Visibility" ]
 
 
-[editable path="Monster4"]

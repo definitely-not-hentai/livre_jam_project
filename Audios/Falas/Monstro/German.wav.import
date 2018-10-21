@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/normal.wav-d1aaa43d2c8a160b3b2b4a0f25b9391f.sample"
+path="res://.import/German.wav-5abfd622c7b7bf0483406e28fb0036cc.sample"
 
 [deps]
 
-source_file="res://Audios/Falas/Monstro/normal.wav"
-dest_files=[ "res://.import/normal.wav-d1aaa43d2c8a160b3b2b4a0f25b9391f.sample" ]
+source_file="res://Audios/Falas/Monstro/German.wav"
+dest_files=[ "res://.import/German.wav-5abfd622c7b7bf0483406e28fb0036cc.sample" ]
 
 [params]
 

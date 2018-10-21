@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg.png-4a64dbda6c798e88da1e6e4407800242.stex"
+path="res://.import/illus.png-39ffabe9875e4b45b0f0dc5b2a1883db.stex"
 
 [deps]
 
-source_file="res://Sprites/Screens/bg.png"
-dest_files=[ "res://.import/bg.png-4a64dbda6c798e88da1e6e4407800242.stex" ]
+source_file="res://Sprites/Screens/illus.png"
+dest_files=[ "res://.import/illus.png-39ffabe9875e4b45b0f0dc5b2a1883db.stex" ]
 
 [params]
 

@@ -30,6 +30,9 @@ func _ready():
 		if node.is_in_group("Monster"):
 			if node.name == "Chefe":
 				node.dialogue_list = fala_chefe
+				node.get_node("AudioStreamPlayer2D").stream = load("res://Audios/Falas/Monstro/Japanese.wav")
+			elif node.name == "M_dentro":
+				node.dialogue_list = ["default_bear","sad","seta_cima","candy"]
 			else:
 				monster_list.append(node)
 				node.connect("falou_bem", self, "on_falou_bem")

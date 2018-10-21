@@ -1,5 +1,26 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Title.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Screens/illus.png" type="Texture" id=2]
 
 [node name="Title" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="illus" type="Sprite" parent="." index="0"]
+
+position = Vector2( -40.4048, 2.57956 )
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
 
 
