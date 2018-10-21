@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/BG.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sprites/Blocks/buttons.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Blocks/danger.png" type="Texture" id=10]
+[ext_resource path="res://Audios/Musicas/Trilha.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -298,8 +299,6 @@ position = Vector2( 2150.33, 67.1497 )
 WALKING = true
 FROM = 1820
 TO = 2410
-pos_dialogo = Vector2( 0, -195 )
-GRAVITY = 1000
 
 [node name="Monster2" parent="." index="5" instance=ExtResource( 5 )]
 
@@ -307,8 +306,6 @@ position = Vector2( 3177, 70.4506 )
 WALKING = true
 FROM = 3180
 TO = 3510
-pos_dialogo = Vector2( 0, -195 )
-GRAVITY = 1000
 
 [node name="Monster3" parent="." index="6" instance=ExtResource( 5 )]
 
@@ -316,8 +313,6 @@ position = Vector2( 2904.31, 253.842 )
 WALKING = true
 FROM = 2900
 TO = 3940
-pos_dialogo = Vector2( 0, -195 )
-GRAVITY = 1000
 
 [node name="Monster4" parent="." index="7" instance=ExtResource( 5 )]
 
@@ -325,8 +320,6 @@ position = Vector2( 4867.62, -39.7796 )
 WALKING = true
 FROM = 4610
 TO = 4980
-pos_dialogo = Vector2( 0, -195 )
-GRAVITY = 1000
 
 [node name="Monster6" parent="." index="8" instance=ExtResource( 5 )]
 
@@ -334,8 +327,6 @@ position = Vector2( 5010.82, -479.419 )
 WALKING = true
 FROM = 4620
 TO = 5360
-pos_dialogo = Vector2( 0, -195 )
-GRAVITY = 1000
 
 [node name="Monster5" parent="." index="9" instance=ExtResource( 5 )]
 
@@ -343,8 +334,6 @@ position = Vector2( 5971.5, -480.356 )
 WALKING = true
 FROM = 5555
 TO = 5900
-pos_dialogo = Vector2( 0, -195 )
-GRAVITY = 1000
 
 [node name="Final" type="Area2D" parent="." index="10"]
 
@@ -422,5 +411,14 @@ texture = ExtResource( 10 )
 hframes = 2
 frame = 1
 _sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="19"]
+
+stream = ExtResource( 11 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 

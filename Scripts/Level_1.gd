@@ -9,10 +9,14 @@ const lista_fala_monstro = [["default_bear","happy","coracao"],
 var monster_list = []
 var fala_boa = 0
 
+func loop():
+	$AudioStreamPlayer.play(0.0)
+
 func _ready():
 	$Final.connect("body_entered",self,"on_final")
 	$Limite.connect("body_entered",self,"on_limite")
 	$Player.connect("add_points",$HUD,"add_points")
+	$AudioStreamPlayer.connect("finished",self,"loop")
 	for node in get_children():
 		if node.is_in_group("Monster"):
 			monster_list.append(node)

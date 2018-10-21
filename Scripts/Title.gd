@@ -10,8 +10,11 @@ func taimeoute():
 
 func _ready():
 	$Timer.connect("timeout",self,"taimeoute")
+	$AudioStreamPlayer.connect("finished",self,"loop")
 	pass
 
+func loop():
+	$AudioStreamPlayer.play(0.0)
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

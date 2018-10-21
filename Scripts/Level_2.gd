@@ -16,9 +16,13 @@ var body_dentro = false
 const pos_fora = Vector2(3436,528)
 const pos_dentro = Vector2(1942,2731)
 
+func loop():
+	$AudioStreamPlayer.play(0.0)
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	$AudioStreamPlayer.connect("finished",self,"loop")
 	$Cabana_chefe.connect("body_entered",self,"body_entrou_fora_cabana")
 	$Cabana_chefe.connect("body_exited",self,"body_saiu_fora_cabana")
 	$Porta.connect("body_entered",self,"body_entrou_dentro_cabana")

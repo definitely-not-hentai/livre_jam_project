@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/BG.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Sprites/Blocks/halloween.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Blocks/cage(nicolas)cage.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Screens/Caritas.png" type="Texture" id=13]
+[ext_resource path="res://Audios/Musicas/Trilha.wav" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -318,5 +319,14 @@ position = Vector2( 1967.09, 2418.66 )
 texture = ExtResource( 13 )
 vframes = 3
 _sections_unfolded = [ "Animation", "Visibility" ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="22"]
+
+stream = ExtResource( 14 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 
