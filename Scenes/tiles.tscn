@@ -1,13 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Blocks/block_0.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Blocks/grama.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Blocks/terra.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.011, 31.9865 )
 
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 302.85, 294.755 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 259.065, 136.789 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 302.619, 180.108 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 267.809, 115.93 )
+
 [node name="tiles" type="Node2D"]
+
+position = Vector2( -0.71698, 0.716972 )
 
 [node name="grass_block" type="Sprite" parent="." index="0"]
 
@@ -27,5 +51,134 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grass_block/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
+
+[node name="Chao_grama" type="Sprite" parent="." index="1"]
+
+position = Vector2( 126.189, -37.1248 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+hframes = 3
+frame = 1
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Chao_grama" index="0"]
+
+position = Vector2( 9.63745, 289.482 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Chao_grama" index="1"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao_grama/StaticBody2D" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Terra" type="Sprite" parent="." index="2"]
+
+position = Vector2( 374.757, 48.5739 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terra" index="0"]
+
+position = Vector2( -0.387207, -2.28 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra/StaticBody2D" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Terra_back" type="Sprite" parent="." index="3"]
+
+modulate = Color( 0.425781, 0.425781, 0.425781, 1 )
+position = Vector2( 349.132, 205.337 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Plataforma_grama_1" type="Sprite" parent="." index="4"]
+
+position = Vector2( 533.377, 26.1725 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+hframes = 3
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Plataforma_grama_1" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_grama_1/StaticBody2D" index="0"]
+
+position = Vector2( 40.2095, -61.1886 )
+shape = SubResource( 3 )
+
+[node name="Plataforma_grama_2" type="Sprite" parent="." index="5"]
+
+position = Vector2( 600.277, 36.7355 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+hframes = 3
+frame = 1
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Plataforma_grama_2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_grama_2/StaticBody2D" index="0"]
+
+shape = SubResource( 4 )
+
+[node name="Plataforma_grama_3" type="Sprite" parent="." index="6"]
+
+position = Vector2( 687.422, 36.2954 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+hframes = 3
+frame = 2
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Plataforma_grama_3" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_grama_3/StaticBody2D" index="0"]
+
+position = Vector2( -32.2388, -71.9164 )
+shape = SubResource( 5 )
 
 

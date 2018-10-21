@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scripts/Monster.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Characters/monstah.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Characters/Bravo.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Fonts/Falas.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Monster_old.gd" type="Script" id=1]
+[ext_resource path="res://Audios/Falas/Monstro/normal.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audios/Falas/Monstro/puto.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sprites/Characters/monstah.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Characters/Bravo.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -100,7 +101,7 @@ tracks/1/keys = {
 "values": [ 2, 3 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
 length = 0.6
 loop = true
@@ -118,12 +119,12 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 254.167, 40.8019 )
 
-[node name="Monster" type="KinematicBody2D" index="0"]
+[node name="Monster" type="KinematicBody2D"]
 
 position = Vector2( 0, 35.2843 )
 input_pickable = false
@@ -136,18 +137,19 @@ FLIP_H = false
 WALKING = false
 FROM = null
 TO = null
-pos_dialogo = Vector2( 0, -195 )
 agressivo = false
-GRAVITY = 1000
+GRAVITY = 800
 WALK_SPEED = 200
 JUMP_SPEED = 700
 ATTACK_DELAY = 1.1
+AUDIO_NORMAL = ExtResource( 2 )
+AUDIO_PUTO = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 5.54565, -54.6457 )
 scale = Vector2( 0.11, 0.11 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, -40 )
 hframes = 5
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
@@ -168,14 +170,15 @@ anims/Attack = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
 anims/Morrer = SubResource( 5 )
-anims/Walking = SubResource( 6 )
+anims/Walking = SubResource( 7 )
 blend_times = [  ]
 
 [node name="Putisse" type="Sprite" parent="." index="3"]
 
-position = Vector2( 0, -120 )
+visible = false
+position = Vector2( 0, -106.389 )
 scale = Vector2( 0.150553, 0.150405 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Deteccao" type="Area2D" parent="." index="4"]
@@ -191,7 +194,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deteccao" index="0"]
 
 position = Vector2( 1.629, -37.4671 )
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="Attack_Timer" type="Timer" parent="." index="5"]
 
@@ -200,19 +203,10 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="Dialogue" type="Sprite" parent="." index="6"]
+[node name="Falas" type="AudioStreamPlayer2D" parent="." index="6"]
 
-visible = false
-position = Vector2( 0, -194.706 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
-hframes = 20
-_sections_unfolded = [ "Animation", "Transform" ]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
-
-stream = null
-volume_db = 0.0
+stream = ExtResource( 3 )
+volume_db = 10.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/BG.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Screens/sacred_dango.png" type="Texture" id=2]
+
+[node name="BG" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+MIN_X_PLAYER = -90
+MAX_X_PLAYER = 6430
+MIN_X_BG = -600
+MAX_X_BG = 5290
+
+[node name="BG1" type="Sprite" parent="." index="0"]
+
+position = Vector2( 350, -570 )
+scale = Vector2( 0.5, 0.6 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BG2" type="Sprite" parent="." index="1"]
+
+position = Vector2( 1310, -588.455 )
+scale = Vector2( 0.5, 0.6 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+

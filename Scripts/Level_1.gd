@@ -3,9 +3,9 @@ extends Node2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-const lista_fala_monstro = ["res://Audios/Falas/Monstro/normal.wav",
-							"res://Audios/Falas/Monstro/normal.wav",
-							"res://Audios/Falas/Monstro/normal.wav"]
+const lista_fala_monstro = [["default_bear","happy","coracao"],
+							["default_bear","happy","candy","interrogacao"],
+							["default_bear","happy","candy","cair"]]
 var monster_list = []
 var fala_boa = 0
 
@@ -17,7 +17,7 @@ func _ready():
 		if node.is_in_group("Monster"):
 			monster_list.append(node)
 			node.connect("falou_bem", self, "on_falou_bem")
-			node.AUDIO_NORMAL = load(lista_fala_monstro[fala_boa])
+			node.dialogue_list = lista_fala_monstro[0]
 			pass
 	pass
 
@@ -26,7 +26,8 @@ func on_falou_bem(node):
 	if fala_boa < 3:
 		monster_list.erase(node)
 		for child in monster_list:
-			child.AUDIO_NORMAL = load(lista_fala_monstro[fala_boa])
+			child.dialogue_list = lista_fala_monstro[fala_boa]
+			pass
 	pass
 
 func on_limite(body):
@@ -39,6 +40,7 @@ func on_limite(body):
 
 func on_final(body):
 	if body.is_in_group("Player"):
+		$BG.set_process(false)
 		$AnimationPlayer.play("End_anim")
 	pass
 	
