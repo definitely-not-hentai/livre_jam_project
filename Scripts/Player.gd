@@ -9,6 +9,7 @@ const normal = Vector2(0,-1)
 export(int) var GRAVITY = 1000
 export(int) var WALK_SPEED = 300
 export(int) var JUMP_SPEED = 700
+export(bool) var can_attack = true
 
 var last = false
 var is_attacking = false
@@ -49,12 +50,17 @@ func attack():
 func animation_end(anim):
 	if anim == "Attack":
 		is_attacking = false
+		$Sprite.position.x = -1.5
 	pass
 
 func _process(delta):
 	linear_velocity.x = 0
-	if Input.is_action_just_pressed("ui_attack") and not is_attacking:
+	if Input.is_action_just_pressed("ui_attack") and not is_attacking and can_attack:
 		$AnimationPlayer.play("Attack")
+		if $Sprite.flip_h:
+			$Sprite.position.x = -22
+		else:
+			$Sprite.position.x = 20
 		is_attacking = true
 	if is_attacking:
 		for body in body_list:
@@ -82,9 +88,9 @@ func _process(delta):
 		elif not is_attacking:
 			if $AnimationPlayer.current_animation == "Jump":
 				$AnimationPlayer.play("Walking")
-				$AnimationPlayer.advance(0.3)
 			elif $AnimationPlayer.current_animation != "Walking":
 				$AnimationPlayer.play("Walking")
+				$AnimationPlayer.advance(0.15)
 		if Input.is_action_pressed("ui_up"):
 			linear_velocity.y -= JUMP_SPEED
 	elif is_on_ceiling():

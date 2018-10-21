@@ -6,17 +6,16 @@ export(int) var multi = 1
 var pontos = 0
 
 func add_points(ganhou):
-	if multi == 0:
+	if multi <= 0:
 		multi = 1
 	if ganhou:
 		pontos += multi
 	else:
 		pontos -= 1
-	var string = ""
-	for i in range(pontos):
-		string += "."
+	if pontos < 0:
+		pontos = 0
 	$Points.clear()
-	$Points.add_text(string)
+	$Points.add_text(str(pontos*100))
 	$Points.update()
 	if ganhou:
 		$AnimationPlayer.play("Matou")

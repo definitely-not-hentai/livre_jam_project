@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/NPC.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Characters/enemy2_scream clone.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Characters/human.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 radius = 121.025
 
-[node name="NPC" type="Area2D"]
+[node name="NPC" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -27,9 +27,11 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-scale = Vector2( 0.35, 0.35 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Transform" ]
+hframes = 2
+frame = 1
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="Dialogue" type="Sprite" parent="." index="2"]
 

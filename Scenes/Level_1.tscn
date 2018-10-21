@@ -280,7 +280,7 @@ shape = SubResource( 1 )
 
 [node name="NPC" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 1031.93, 208.425 )
+position = Vector2( 1039.15, 216.548 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Monster" parent="." index="3" instance=ExtResource( 4 )]
@@ -288,42 +288,42 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 2047.83, 29.4662 )
 WALKING = true
 FROM = 1740
-TO = 2415
+TO = 2375
 
 [node name="Monster2" parent="." index="4" instance=ExtResource( 4 )]
 
 position = Vector2( 3501.08, 50.8552 )
 WALKING = true
 FROM = 3075
-TO = 3500
+TO = 3450
 
 [node name="Monster3" parent="." index="5" instance=ExtResource( 4 )]
 
-position = Vector2( 3817.43, 206.136 )
+position = Vector2( 3470.74, 249.849 )
 WALKING = true
-FROM = 2783
-TO = 3930
+FROM = 2880
+TO = 3880
 
 [node name="Monster4" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 4502.51, -18.7448 )
 WALKING = true
 FROM = 4500
-TO = 5030
+TO = 4980
 
 [node name="Monster6" parent="." index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 4495.06, -395.352 )
 WALKING = true
 FROM = 4490
-TO = 5340
+TO = 5290
 
 [node name="Monster5" parent="." index="8" instance=ExtResource( 4 )]
 
 position = Vector2( 5387.58, -462.179 )
 WALKING = true
 FROM = 5380
-TO = 5920
+TO = 5870
 
 [node name="Final" type="Area2D" parent="." index="9"]
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Characters/Johnny-Walker.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Characters/knight_main.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 14.8334
-height = 59.4062
+radius = 25.3338
+height = 43.169
 
 [sub_resource type="Animation" id=2]
 
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 2 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -67,7 +67,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=5]
 
-length = 1.2
+length = 0.3
 loop = true
 step = 0.15
 tracks/0/type = "value"
@@ -77,16 +77,16 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1, 0, 2, 0 ]
+"values": [ 0, 1 ]
 }
 
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35.745, 4.66032 )
+extents = Vector2( 50.8266, 4.66032 )
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -99,17 +99,21 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 GRAVITY = 1000
 WALK_SPEED = 300
 JUMP_SPEED = 700
+can_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
+position = Vector2( -0.970596, 0.9706 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
+position = Vector2( -1.5, 0 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
-vframes = 2
-hframes = 2
-_sections_unfolded = [ "Animation", "Offset" ]
+hframes = 3
+frame = 1
+_sections_unfolded = [ "Animation", "Offset", "Transform", "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 

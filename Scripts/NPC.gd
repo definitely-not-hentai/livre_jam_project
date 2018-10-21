@@ -3,6 +3,9 @@ extends Area2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+var player_near = false
+var player
+
 const frames = {
 	default = 0,
 	happy = 1,
@@ -23,7 +26,12 @@ func _ready():
 	
 func _input(event):
 	if event is InputEventKey:
-		if event.is_action_pressed("ui_talk"):
+		if event.is_action_pressed("ui_talk") and player_near:
+			if player.position.x < position.x:
+				$Sprite.flip_h = true
+			else:
+				$Sprite.flip_h = false
+			$Sprite.frame = 0
 			$Dialogue.frame = frames[dialogue_list[dialogue_index]]
 			dialogue_index+=1
 			if dialogue_index >= dialogue_list.size():
@@ -32,6 +40,8 @@ func _input(event):
 
 func on_body_enter(body):
 	if body.is_in_group("Player"):
+		player = body
+		player_near = true
 		$Dialogue.frame = frames[dialogue_list[0]]
 		dialogue_index = 1
 		is_player_near = true
@@ -40,6 +50,7 @@ func on_body_enter(body):
 	
 func on_body_exit(body):
 	if body.is_in_group("Player"):
+		player_near = false
 		$Dialogue.hide()
 	pass
 #func _process(delta):

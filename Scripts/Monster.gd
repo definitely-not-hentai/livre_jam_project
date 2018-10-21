@@ -7,6 +7,7 @@ signal falou_bem(node)
 
 const normal = Vector2(0,-1)
 
+export(bool) var FLIP_H = false
 export(bool) var WALKING
 export(int) var FROM
 export(int) var TO
@@ -42,6 +43,7 @@ func _ready():
 	$Attack_Timer.wait_time = ATTACK_DELAY
 	$Attack_Timer.connect("timeout",self,"attack_timeout")
 	$Falas.connect("finished",self,"audio_finished")
+	$Sprite.flip_h = FLIP_H
 	if agressivo:
 		$Putisse.show()
 	pass
@@ -78,10 +80,7 @@ func attack():
 		#rint("ai")
 		WALKING = false
 		get_parent().fala_boa = 0
-		if $Sprite.flip_h:
-			$AnimationPlayer.play("Morrer_Right")
-		else:
-			$AnimationPlayer.play("Morrer_Left")
+		$AnimationPlayer.play("Morrer")
 		set_process(false)
 		return true
 		pass
@@ -92,15 +91,15 @@ func _process(delta):
 		if agressivo and ve_player:
 			var distance = player.position - position
 			if distance.x < 0:
-				$Sprite.flip_h = true
-			else:
 				$Sprite.flip_h = false
+			else:
+				$Sprite.flip_h = true
 			if player.position.x < TO and player.position.x > FROM:
-				if distance.x < -40:
+				if distance.x < -50:
 					linear_velocity.x -= WALK_SPEED
-				elif distance.x > 40:
+				elif distance.x > 50:
 					linear_velocity.x += WALK_SPEED
-			if distance.x < 50 and distance.x > -50 and can_attack:
+			if distance.x < 60 and distance.x > -60 and can_attack:
 				can_attack = false
 				$Attack_Timer.start()
 				is_attacking = true
@@ -111,22 +110,22 @@ func _process(delta):
 			if going_right:
 				if position.x < TO:
 					linear_velocity.x += WALK_SPEED
-					$Sprite.flip_h = false
+					$Sprite.flip_h = true
 				else:
 					going_right = false
 			else:
 				if position.x > FROM:
 					linear_velocity.x -= WALK_SPEED
-					$Sprite.flip_h = true
+					$Sprite.flip_h = false
 				else:
 					going_right = true
 	if ve_player:
 		if Input.is_action_just_pressed("ui_talk"):
 			if not agressivo:
 				if player.position.x > position.x:
-					$Sprite.flip_h = false
-				else:
 					$Sprite.flip_h = true
+				else:
+					$Sprite.flip_h = false
 				print("fala normal")
 				$Falas.stream = AUDIO_NORMAL
 				WALKING = false
