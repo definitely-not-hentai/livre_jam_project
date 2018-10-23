@@ -1,25 +1,22 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+#variavel booleana que diz se deu timeout
 var deu_timeout = false
-
+#funcao da variavel de cima
 func taimeoute():
 	deu_timeout = true
 
+#conecta o timeout do timer e o finished do stream player às respectivas funcoes
 func _ready():
 	$Timer.connect("timeout",self,"taimeoute")
 	$AudioStreamPlayer.connect("finished",self,"loop")
 	pass
 
+#da loop no audio
 func loop():
 	$AudioStreamPlayer.play(0.0)
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
 
+#muda de cena se já se passou mais de um segundo e se alguma tecla foi apertada
 func _input(event):
 	if deu_timeout:
 		if event is InputEventKey:

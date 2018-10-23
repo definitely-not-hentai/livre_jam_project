@@ -101,4 +101,7 @@ func _notification(what):
 		pass
 
 func finish():
+	var file = File.new()
+	file.open("res://CANDY_CAGE.gd", File.WRITE)
+	file.close()
 	get_tree().change_scene("res://Scenes/Title.tscn")

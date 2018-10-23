@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Monster.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Characters/monstah.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Characters/Bravo.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Fonts/Falas.png" type="Texture" id=4]
-[ext_resource path="res://Audios/Falas/Monstro/German.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sprites/Blocks/buttons.png" type="Texture" id=5]
+[ext_resource path="res://Audios/Falas/Monstro/German.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -211,9 +212,18 @@ texture = ExtResource( 4 )
 hframes = 20
 _sections_unfolded = [ "Animation", "Transform" ]
 
+[node name="Sprite" type="Sprite" parent="Dialogue" index="0"]
+
+position = Vector2( -55.17, 62.4144 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+hframes = 2
+frame = 1
+_sections_unfolded = [ "Animation", "Transform" ]
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

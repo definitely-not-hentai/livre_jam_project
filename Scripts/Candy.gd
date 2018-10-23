@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+
+#Script do doce do Level 2, basicamente cai
+
 const normal = Vector2(0,-1)
 export(int) var GRAVITY = 1000
 

@@ -190,6 +190,8 @@ func _process(delta):
 		if ve_player:
 			if Input.is_action_just_pressed("ui_talk"):
 				falar()
+		else:
+			$Dialogue.hide()
 		if is_on_floor() or last:
 			linear_velocity.y = 0
 			if linear_velocity.x == 0 and not is_attacking:
