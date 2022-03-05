@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/Screens/illus.png" type="Texture" id=2]
 [ext_resource path="res://Audios/Musicas/Trilha.wav" type="AudioStream" id=3]
 
-[node name="Title" type="Node2D"]
+[node name="Title" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
